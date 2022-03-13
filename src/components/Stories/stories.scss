@@ -1,0 +1,97 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.stories {
+  h2 {
+    margin-bottom: $size-3;
+  }
+  .stories__list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: $size-3;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    .story__item {
+      &__inner {
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        padding: $size-3;
+
+        @include breakpoint("small") {
+          padding: $size-2;
+        }
+
+        header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: $size-2;
+          h3 {
+            margin: 0 0 $size-1;
+            color: $color-secondary;
+            max-inline-size: 420px;
+          }
+          h4 {
+            white-space: nowrap;
+          }
+        }
+        footer {
+          border-top: 1px solid $color-gray-2;
+          display: flex;
+          align-items: center;
+          gap: $size-2;
+          margin: $size-3 0 0;
+          padding: $size-2 0 0;
+          .avatar {
+            display: flex;
+            gap: $size-1;
+            align-items: center;
+            img {
+              display: inline-block;
+              width: 30px;
+              border-radius: 100%;
+            }
+          }
+        }
+        p {
+          margin: 0;
+        }
+      }
+      a {
+        @include transition(box-shadow, 0.2s, ease);
+        display: flex;
+        border-radius: $border-radius;
+        background-color: white;
+        box-shadow: $box-shadow-1;
+        transform: translate3d(0, 0, 0);
+        color: $color-text;
+        @include breakpoint("small") {
+          flex-direction: column;
+        }
+        &:hover,
+        &:focus {
+          box-shadow: $box-shadow-2;
+        }
+        &:focus {
+          outline: $color-secondary solid 1px;
+        }
+
+        > img {
+          aspect-ratio: 1;
+          max-width: 250px;
+          object-fit: cover;
+          border-radius: $border-radius 0 0 $border-radius;
+          @include breakpoint("small") {
+            aspect-ratio: 16/9;
+            max-width: 100%;
+            border-radius: $border-radius $border-radius 0 0;
+          }
+        }
+      }
+    }
+  }
+}

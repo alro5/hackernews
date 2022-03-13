@@ -1,0 +1,58 @@
+@import "./variables";
+@import "./mixins";
+
+#app {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  > header {
+    grid-area: header;
+    background-color: $color-primary;
+    padding: $size-3;
+    @include breakpoint("medium") {
+      padding: $size-2;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      gap: $size-1;
+      img {
+        @include breakpoint("medium") {
+          width: 30px;
+        }
+      }
+      h1 {
+        color: white;
+      }
+    }
+  }
+
+  > main {
+    grid-area: main;
+    padding: $size-2;
+    margin: $size-8 0;
+    @include breakpoint("medium") {
+      margin: $size-3 0;
+    }
+  }
+
+  > footer {
+    grid-area: footer;
+    background-color: $color-gray-2;
+  }
+}
+
+.content-wrapped {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-center {
+  text-align: center;
+}
